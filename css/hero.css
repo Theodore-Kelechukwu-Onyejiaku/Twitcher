@@ -1,0 +1,14 @@
+.hero {
+    height: 500px;
+    background-image: url("/assets/images/bird.png"),
+    radial-gradient(at 12% 55%, hsla(328, 97%, 79%, 1) 0px, transparent 50%),
+    radial-gradient(at 4% 82%, hsla(16, 62%, 63%, 1) 0px, transparent 50%),
+    radial-gradient(at 24% 9%, hsla(326, 65%, 77%, 1) 0px, transparent 50%),
+    radial-gradient(at 13% 51%, hsla(357, 61%, 63%, 1) 0px, transparent 50%),
+    radial-gradient(at 48% 35%, hsla(56, 66%, 68%, 1) 0px, transparent 50%),
+    radial-gradient(at 46% 55%, hsla(292, 67%, 77%, 1) 0px, transparent 50%),
+    radial-gradient(at 98% 91%, hsla(352, 96%, 67%, 1) 0px, transparent 50%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #6b7280;
+}

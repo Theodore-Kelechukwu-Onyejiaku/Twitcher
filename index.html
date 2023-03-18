@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Climate+Crisis&family=Montserrat:wght@500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./css/hero.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+
+    <!-- leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+    <title>Document</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    },
+                    fontFamily: {
+                        "crisis": ['Climate Crisis', "cursive"],
+                        "monteserat": ['Montserrat', "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="overflow-hidden">
+        <!-- NAV BAR -->
+        <div class="my-10 flex bg-white ">
+            <div class="relative w-full flex flex-col">
+                <div class="flex   w-full px-5 sm:px-20">
+                    <div class="w-full  flex items-center justify-start">
+                        <div class="">
+                            <a class="flex items-center" href="#">
+                                <img class="w-8 h-8 sm:w-12 sm:h-12" src="./assets/images/logo.png" alt="Avatar Logo">
+                                <span class="ml-3 sm:text-xl  body-font font-crisis">Twitcher</span>
+                            </a>
+                        </div>
+                        <div class="hidden ml-5 sm:flex items-center space-x-5">
+                            <a class="font-bold hover:bg-slate-100 px-3 py-2" href="">Home</a>
+                            <a class="font-bold hover:bg-slate-100 px-3 py-2" href="">Post</a>
+                        </div>
+                    </div>
+                    <div class="border hidden sm:flex w-full space-x-5 justify-end items-center">
+                        <a class="font-bold hover:bg-slate-100 px-3 py-2" href="/">Login</a>
+                        <a class="font-bold px-3 py-2 rounded-md text-white bg-black" href="/">Signup</a>
+                        <a class="p-3 h-16 w-16 rounded-full flex flex-col justify-center  border  text-center bg-gray-500 text-white"
+                            href="/">
+                            <span>T.K.O</span>
+                        </a>
+                    </div>
+
+                    <div class="w-1/2 sm:hidden flex justify-end mx-5 sm:mx-20">
+                        <button class="flex flex-col justify-center">
+                            <span id="menu_icon" class="material-symbols-outlined">
+                                menu
+                            </span>
+                        </button>
+                        <button class="flex flex-col justify-center">
+                            <span id="close_icon" class="hidden material-symbols-outlined">
+                                close
+                            </span>
+                        </button>
+                    </div>
+
+
+                    <!-- <span id="menu">hi</span> -->
+                </div>
+                <div id="sub_menu" class="hidden bg-white top-full absolute z-20 w-full my-5">
+                    <div class="flex flex-col space-y-3 sm:hidden shadow-2xl p-5">
+                        <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="">Create Post</a>
+                        <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="/">Log In</a>
+                        <a class="w-fit font-bold px-3 py-2 rounded-md text-white bg-black" href="/">Signup</a>
+                        <a class="border p-1 h-12 w-12 rounded-full flex flex-col justify-center  text-center bg-gray-500 text-white"
+                            href="/">
+                            <span class="text-sm">T.K.O</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HERO -->
+        <div class="my-14 mx-5 sm:mx-20">
+            <p class="text-center font-bold my-5">The Twitches</p>
+            <h1 class="text-4xl my-5 text-center font-extrabold font-monteserat">Writings and Posts from Our Bird
+                Watchers
+            </h1>
+            <p class="my-5 text-center">The latest news, happenings, events and resources for Twitchers</p>
+            <div class="w-full hero text-white border relative font-monteserat">
+                <div class="absolute z-10 left-0 p-3 sm:p-10 w-full bottom-10">
+                    <p class="text-sm my-3 font-extrabold">Daniel Grigs - 08 Jun 2023</p>
+                    <p class="text-2xl my-3 font-extrabold">Bird's View Representation</p>
+                    <p class="text-sm my-3 font-extrabold">Learn how to take the best of pictures</p>
+                    <div class="my-5">
+                        <span class="p-2 inline-block m-1 font-medium border rounded-2xl">Excitement</span>
+                        <span class="p-2 inline-block m-1 font-medium border rounded-2xl">creative</span>
+                        <span class="p-2 inline-block m-1 font-medium border rounded-2xl">happiness</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MAP -->
+        <div id="map_container" class="hidden h-screen">
+            <div
+                class="w-full fixed top-0 left-0 right-0 z-50 h-screen bg-black bg-opacity-75 flex flex-col items-center justify-center">
+                <div class="relative text-3xl flex justify-end">
+                    <button class="flex flex-col justify-end">
+                        <span id="close_map" class="material-symbols-outlined text-white">
+                            close
+                        </span>
+                    </button>
+                </div>
+
+                <!-- map box -->
+                <div id="map" class="h-96 w-full flex flex-col justify-center">
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- POSTS -->
+        <div
+            class="my-10 mx-5 sm:mx-20 grid grid-cols-1 sm:grid-cols-2 gap-y-14  lg:grid-cols-3 sm:gap-x-5 lg:gap-x-14 font-monteserat">
+            <div class="flex flex-col">
+                <img class="h-60 w-full" src="https://cdn.pixabay.com/photo/2017/07/18/18/24/dove-2516641__480.jpg" />
+                <div class="flex space-x-5 mt-5 items-center">
+                    <span">Theodore Kelz</span><span>23 Jan,
+                            2022</span>
+                </div>
+                <span class="text-2xl font-bold my-3">Lorem Ipsium</span>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                <div class="my-5">
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">Excitement</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">creative</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">happiness</span>
+                </div>
+                <div>
+                    <button onclick="showMap(51.505, -0.09)"
+                        class="show_map flex px-3 py-2 rounded-md text-white bg-black">
+                        <span>View Map</span>
+                        <svg style="color:red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <img class="h-60 w-full" src="https://cdn.pixabay.com/photo/2016/12/13/22/25/bird-1905255__480.jpg" />
+                <div class="flex space-x-5 mt-5 items-center">
+                    <span">Theodore Kelz</span><span>23 Jan,
+                            2022</span>
+                </div>
+                <span class="text-2xl font-bold my-3">Lorem Ipsium</span>
+                <span>Eaque excepturi minima cupiditate? Minus
+                    ad ut, molestiae quasi asperiores fugiat quisquam aut voluptate sit dolorum quo assumenda?</span>
+                <div class="my-5">
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">Excitement</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">creative</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">happiness</span>
+                </div>
+                <div>
+                    <button onclick="showMap(6.4551, 3.3942)"
+                        class="show_map flex px-3 py-2 rounded-md text-white bg-black">
+                        <span>View Map</span>
+                        <svg style="color:red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <img class="h-60 w-full" src="https://cdn.pixabay.com/photo/2012/02/24/16/59/swan-16736__480.jpg" />
+                <div class="flex space-x-5 mt-5 items-center">
+                    <span">Theodore Kelz</span><span>23 Jan,
+                            2022</span>
+                </div>
+                <span class="text-2xl font-bold my-3">Lorem Ipsium</span>
+                <span>Ducimus, culpa repellat quibusdam
+                    molestiae atque earum.</span>
+                <div class="my-5">
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">Excitement</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">creative</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">happiness</span>
+                </div>
+                <div>
+                    <button onclick="showMap(4.8156, 7.0498)"
+                        class="show_map flex px-3 py-2 rounded-md text-white bg-black">
+                        <span>View Map</span>
+                        <svg style="color:red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <img class="h-60 w-full" src="https://cdn.pixabay.com/photo/2016/11/18/12/14/owl-1834152__480.jpg" />
+                <div class="flex space-x-5 mt-5 items-center">
+                    <span">Theodore Kelz</span><span>23 Jan,
+                            2022</span>
+                </div>
+                <span class="text-2xl font-bold my-3">Lorem Ipsium</span>
+                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </span>
+                <div class="my-5">
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">Excitement</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">creative</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">happiness</span>
+                </div>
+                <div>
+                    <button onclick="showMap(40.7128, 74.0060)"
+                        class="show_map flex px-3 py-2 rounded-md text-white bg-black">
+                        <span>View Map</span>
+                        <svg style="color:red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <img class="h-60 w-full" src="https://cdn.pixabay.com/photo/2017/09/16/19/33/parrot-2756488__480.jpg" />
+                <div class="flex space-x-5 mt-5 items-center">
+                    <span">Theodore Kelz</span><span>23 Jan,
+                            2022</span>
+                </div>
+                <span class="text-2xl font-bold my-3">Lorem Ipsium</span>
+                <span>Laudantium officiis possimus suscipit reprehenderit quis dolore omnis, minima
+                    laborum rerum officia, harum quia placeat!</span>
+                <div class="my-5">
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">Excitement</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">creative</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">happiness</span>
+                </div>
+                <div>
+                    <button onclick="showMap(51.5074, 0.1278)"
+                        class="show_map flex px-3 py-2 rounded-md text-white bg-black">
+                        <span>View Map</span>
+                        <svg style="color:red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <img class="h-60 w-full"
+                    src="https://cdn.pixabay.com/photo/2013/04/04/12/34/mountains-100367__480.jpg" />
+                <div class="flex space-x-5 mt-5 items-center">
+                    <span">Theodore Kelz</span><span>23 Jan,
+                            2022</span>
+                </div>
+                <span class="text-2xl font-bold my-3">Lorem Ipsium</span>
+                <span>Laudantium officiis possimus suscipit reprehenderit quis dolore omnis, minima
+                    laborum rerum officia, harum quia placeat!</span>
+                <div class="my-5">
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">Excitement</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">creative</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">happiness</span>
+                </div>
+                <div>
+                    <button onclick="showMap(35.6895, 139.6917)"
+                        class="show_map flex px-3 py-2 rounded-md text-white bg-black">
+                        <span>View Map</span>
+                        <svg style="color:red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <img class="h-60 w-full" src="https://cdn.pixabay.com/photo/2015/06/21/20/12/peafowl-816981__480.jpg" />
+                <div class="flex space-x-5 mt-5 items-center">
+                    <span">Theodore Kelz</span><span>23 Jan,
+                            2022</span>
+                </div>
+                <span class="text-2xl font-bold my-3">Lorem Ipsium</span>
+                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</span>
+                <div class="my-5">
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">Excitement</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">creative</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">happiness</span>
+                </div>
+                <div>
+                    <button onclick="showMap(37.7749, 122.4194)"
+                        class="show_map flex px-3 py-2 rounded-md text-white bg-black">
+                        <span>View Map</span>
+                        <svg style="color:red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <img class="h-60 w-full" src="https://cdn.pixabay.com/photo/2016/07/25/20/11/bird-1541297__480.jpg" />
+                <div class="flex space-x-5 mt-5 items-center">
+                    <span">Theodore Kelz</span><span>23 Jan,
+                            2022</span>
+                </div>
+                <span class="text-2xl font-bold my-3">Lorem Ipsium</span>
+                <span>Ducimus, culpa repellat quibusdam
+                    molestiae atque earum.</span>
+                <div class="my-5">
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">Excitement</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">creative</span>
+                    <span class="p-2 inline-block m-1 font-medium border border-black rounded-2xl">happiness</span>
+                </div>
+                <div>
+                    <button onclick="showMap(48.8566, 2.3522)"
+                        class="show_map flex px-3 py-2 rounded-md text-white bg-black">
+                        <span>View Map</span>
+                        <svg style="color:red" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div
+            class="bg-gray-500 text-white px-5 sm:px-20 h-32 items-center w-full flex flex-col sm:flex-row justify-around py-5 sm:justify-between">
+            <div>
+                <a class="flex items-center" href="#">
+                    <img class="w-8 h-8" src="./assets/images/logo.png" alt="Avatar Logo">
+                    <span class="ml-3  body-font font-crisis">Twitcher</span>
+                </a>
+            </div>
+            <div class=" opacity-100">
+                <span>@2023, Twitchers. All rights reserved</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+        let map;
+        const showMap = (lat, long) => {
+            $("#map_container").show();
+            const mapContainer = document.getElementById("map");
+            map = L.map(mapContainer).setView([lat, long], 13);
+            L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            }).addTo(map);
+            const marker = L.marker([lat, long]).addTo(map);
+            marker.bindPopup("<b>Twitcher's Location</b>").openPopup();
+        };
+        // close map
+        $("#close_map").click(() => {
+            if (map) {
+                map.remove();
+            }
+            $("#map_container").hide();
+        })
+    </script>
+
+    <script defer>
+        $(document).ready(() => {
+
+
+            // open menu
+            $("#menu_icon").click(() => {
+                $("#menu_icon").hide()
+                $("#close_icon").show()
+                $("#sub_menu").addClass("visible")
+                $("#sub_menu").animate({
+                    height: 'toggle'
+                })
+            })
+
+            // close menu
+            $("#close_icon").click(() => {
+                $("#close_icon").hide()
+                $("#menu_icon").show()
+                $("#sub_menu").addClass("visible")
+                $("#sub_menu").animate({
+                    height: 'toggle'
+                })
+            })
+
+        })
+    </script>
+</body>
+
+</html>
