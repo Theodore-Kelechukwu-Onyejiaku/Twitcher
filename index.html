@@ -22,7 +22,7 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
-    <title>Document</title>
+    <title>Welcome to Twitcher</title>
     <script>
         tailwind.config = {
             theme: {
@@ -56,7 +56,7 @@
                         </div>
                         <div class="hidden ml-5 sm:flex items-center space-x-5">
                             <a class="font-bold hover:bg-slate-100 px-3 py-2" href="">Home</a>
-                            <a class="font-bold hover:bg-slate-100 px-3 py-2" href="">Post</a>
+                            <a class="font-bold hover:bg-slate-100 px-3 py-2" href="./post.html">Post</a>
                         </div>
                     </div>
                     <div class="hidden sm:flex w-full space-x-5 justify-end items-center">
@@ -86,7 +86,8 @@
                 </div>
                 <div id="sub_menu" class="hidden bg-white top-full absolute z-20 w-full my-5">
                     <div class="flex flex-col space-y-3 sm:hidden shadow-2xl p-5">
-                        <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="">Create Post</a>
+                        <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="./post.html">Create
+                            Post</a>
                         <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="/">Log In</a>
                         <a class="w-fit font-bold px-3 py-2 rounded-md text-white bg-black" href="/">Signup</a>
                         <a class="border p-1 h-12 w-12 rounded-full flex flex-col justify-center  text-center bg-gray-500 text-white"
@@ -385,55 +386,7 @@
 
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-    <script>
-        let map;
-        const showMap = (lat, long) => {
-            $("#map_container").show();
-            const mapContainer = document.getElementById("map");
-            map = L.map(mapContainer).setView([lat, long], 13);
-            L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                maxZoom: 19,
-                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            }).addTo(map);
-            const marker = L.marker([lat, long]).addTo(map);
-            marker.bindPopup("<b>Twitcher's Location</b>").openPopup();
-        };
-        // close map
-        $("#close_map").click(() => {
-            if (map) {
-                map.remove();
-            }
-            $("#map_container").hide();
-        })
-    </script>
-
-    <script defer>
-        $(document).ready(() => {
-
-
-            // open menu
-            $("#menu_icon").click(() => {
-                $("#menu_icon").hide()
-                $("#close_icon").show()
-                $("#sub_menu").addClass("visible")
-                $("#sub_menu").animate({
-                    height: 'toggle'
-                })
-            })
-
-            // close menu
-            $("#close_icon").click(() => {
-                $("#close_icon").hide()
-                $("#menu_icon").show()
-                $("#sub_menu").addClass("visible")
-                $("#sub_menu").animate({
-                    height: 'toggle'
-                })
-            })
-
-        })
-    </script>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>
