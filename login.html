@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Climate+Crisis&family=Montserrat:wght@500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./css/hero.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+
+    <!-- leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+    <title>Welcome to Twitcher</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        inputCol: '#f8f8ff',
+                    },
+                    fontFamily: {
+                        "crisis": ['Climate Crisis', "cursive"],
+                        "monteserat": ['Montserrat', "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="">
+        <!-- NAV BAR -->
+        <div class="sticky top-0 z-50 py-5 sm:py-3 mt-0 shadow-md my-10 flex bg-white ">
+            <div class="relative w-full flex flex-col">
+                <div class="flex   w-full px-5 sm:px-20">
+                    <div class="w-full  flex items-center justify-start">
+                        <div class="">
+                            <a class="flex items-center" href="/">
+                                <img class="w-8 h-8 sm:w-12 sm:h-12" src="./assets/images/logo.png" alt="Avatar Logo">
+                                <span class="ml-3 sm:text-xl  body-font font-crisis">Twitcher</span>
+                            </a>
+                        </div>
+                        <div class="hidden ml-5 sm:flex items-center space-x-5">
+                            <a class="font-bold hover:bg-slate-100 px-3 py-2" href="">Home</a>
+                            <a class="font-bold hover:bg-slate-100 px-3 py-2" href="./post.html">Post</a>
+                        </div>
+                    </div>
+                    <div class="hidden sm:flex w-full space-x-5 justify-end items-center">
+                        <a class="font-bold hover:bg-slate-100 px-3 py-2" href="/login.html">Login</a>
+                        <a class="font-bold px-3 py-2 rounded-md text-white bg-black" href="/signup.html">Signup</a>
+                        <a class="p-3 h-16 w-16 rounded-full flex flex-col justify-center  border  text-center bg-gray-500 text-white"
+                            href="/">
+                            <span>T.K.O</span>
+                        </a>
+                    </div>
+
+                    <div class="w-1/2 sm:hidden flex justify-end mx-5 sm:mx-20">
+                        <button class="flex flex-col justify-center">
+                            <span id="menu_icon" class="material-symbols-outlined">
+                                menu
+                            </span>
+                        </button>
+                        <button class="flex flex-col justify-center">
+                            <span id="close_icon" class="hidden material-symbols-outlined">
+                                close
+                            </span>
+                        </button>
+                    </div>
+
+                </div>
+                <div id="sub_menu" class="hidden bg-white top-full absolute z-20 w-full my-5">
+                    <div class="flex flex-col space-y-3 sm:hidden shadow-2xl p-5">
+                        <a class="w-fit rounded font-bold" href="./post.html">Create
+                            Post</a>
+                        <a class="w-fit rounded font-bold hover:bg-slate-100" href="/">Log In</a>
+                        <a class="w-fit font-bold px-3 py-2 rounded-md text-white bg-black"
+                            href="./signup.html">Signup</a>
+                        <a class="border p-1 h-12 w-12 rounded-full flex flex-col justify-center  text-center bg-gray-500 text-white"
+                            href="/profile.html">
+                            <span class="text-sm">T.K.O</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOGIN SECTION -->
+        <div class="my-10 mx-5 sm:mx-20  font-monteserat">
+            <h1 class="text-xl my-5 font-bold">Login to Twitcher</h1>
+            <p class="text-sm my-5">Want to create a post or a twitch? Create a profile? Login here</p>
+            <div class="w-full flex flex-col sm:justify-center sm:flex-row my-5">
+                <form id="signup-form" class="w-full font-monteserat lg:w-1/2">
+                    <div class="flex flex-col">
+                        <label class="my-3">Email Address</label>
+                        <input type="email" id="email" name="email" class="w-full bg-inputCol p-3" />
+                    </div>
+
+                    <div class="flex flex-col justify-center relative">
+                        <span id="eye_close" class="hidden material-symbols-outlined absolute bottom-3 right-3">
+                            visibility
+                        </span>
+                        <span id="eye_open" class="material-symbols-outlined absolute bottom-3 right-3">
+                            visibility_off
+                        </span>
+                        <label class="my-3">Password</label>
+                        <input type="password" id="password" name="password" class="w-full bg-inputCol p-3" />
+
+                    </div>
+                    <button class=" px-3 py-2 my-5 sm:my-10 border rounded-md text-white bg-black">
+                        Login
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div
+            class="bg-gray-500 absolute bottom-0 text-white px-5 sm:px-20 h-32 items-center w-full flex flex-col sm:flex-row justify-around py-5 sm:justify-between">
+            <div>
+                <a class="flex items-center" href="#">
+                    <img class="w-8 h-8" src="./assets/images/logo.png" alt="Avatar Logo">
+                    <span class="ml-3  body-font font-crisis">Twitcher</span>
+                </a>
+            </div>
+            <div class=" opacity-100">
+                <span>@2023, Twitchers. All rights reserved</span>
+            </div>
+
+        </div>
+    </div>
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- JQuery Validator -->
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="./scripts/index.js"></script>
+
+    <!-- form validation -->
+    <script src="./scripts/form-validation.js"></script>
+</body>

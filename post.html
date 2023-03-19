@@ -29,7 +29,6 @@
             theme: {
                 extend: {
                     colors: {
-                        clifford: '#da373d',
                         inputCol: '#f8f8ff',
                     },
                     fontFamily: {
@@ -71,9 +70,9 @@
                     </div>
                     <div class="hidden sm:flex w-full space-x-5 justify-end items-center">
                         <a class="font-bold hover:bg-slate-100 px-3 py-2" href="./login.html">Login</a>
-                        <a class="font-bold px-3 py-2 rounded-md text-white bg-black" href="/">Signup</a>
+                        <a class="font-bold px-3 py-2 rounded-md text-white bg-black" href="./signup.html">Signup</a>
                         <a class="p-3 h-16 w-16 rounded-full flex flex-col justify-center  border  text-center bg-gray-500 text-white"
-                            href="/">
+                            href="/profile.html">
                             <span>T.K.O</span>
                         </a>
                     </div>
@@ -96,10 +95,11 @@
                     <div class="flex flex-col space-y-3 sm:hidden shadow-2xl p-5">
                         <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="./post.html">Create
                             Post</a>
-                        <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="/">Log In</a>
-                        <a class="w-fit font-bold px-3 py-2 rounded-md text-white bg-black" href="/">Signup</a>
+                        <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="./login.html">Log In</a>
+                        <a class="w-fit font-bold px-3 py-2 rounded-md text-white bg-black"
+                            href="./signup.html">Signup</a>
                         <a class="border p-1 h-12 w-12 rounded-full flex flex-col justify-center  text-center bg-gray-500 text-white"
-                            href="/">
+                            href="/profile.html">
                             <span class="text-sm">T.K.O</span>
                         </a>
                     </div>
@@ -149,7 +149,7 @@
                 </div>
 
                 <!-- other -->
-                <div class="h-full w-full mt-3 sm:mt-0 sm:px-10 relative">
+                <div class="h-full w-full mt-3 px-0 sm:mt-0 sm:px-10 relative">
                     <form class="">
                         <div class="flex flex-col">
                             <Label class="mb-3">Title</Label>
@@ -204,47 +204,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="./scripts/index.js"></script>
-    <script>
-        $(document).ready(() => {
-            let input = $("#inputTag");
-            let imageName = $("#imageName").get(0);
-            let imageBanner = $("#imageBanner")
-
-            input.change(() => {
-                let imageFile = document.querySelector("input[type=file]").files[0];
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#image-banner').attr('background-image', e.target.result);
-                    $('#image-preview').attr('src', e.target.result);
-                    $('#image-preview').addClass("h-full w-full")
-
-                }
-                reader.readAsDataURL(imageFile);
-            })
-
-            $("#get_location_checkbox").change(async () => {
-                const IP_LOCATION_API_KEY = "2a9605c944cc44729d3daf6b0d239aee";
-                if ($("#get_location_checkbox").prop('checked')) {
-                    try {
-                        $('.location_error').text("");
-                        let res = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${IP_LOCATION_API_KEY}`)
-                        res = await res.json()
-                        $('#latitude-output').text(res.latitude);
-                        $('#longitude-output').text(res.longitude);
-                    } catch (error) {
-                        console.log(error)
-                        $('.location_error').text("Error getting latitude and latitude")
-                    }
-                } else {
-                    // Checkbox is not checked
-                    $('#latitude-output').text("");
-                    $('#longitude-output').text("");
-                    $('.location_error').text("");
-                }
-            })
-
-        })
-    </script>
+    <script src="./scripts/post.js"></script>
 
 </body>
 
