@@ -1,7 +1,5 @@
 $(document).ready(() => {
     let input = $("#inputTag");
-    let imageName = $("#imageName").get(0);
-    let imageBanner = $("#imageBanner")
 
     input.change(() => {
         let imageFile = document.querySelector("input[type=file]").files[0];

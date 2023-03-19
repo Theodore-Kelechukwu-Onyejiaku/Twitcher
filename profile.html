@@ -38,6 +38,15 @@
             }
         }
     </script>
+    <style>
+        .image-input {
+            display: none;
+        }
+
+        .image-label {
+            cursor: pointer;
+        }
+    </style>
 
 </head>
 
@@ -101,27 +110,32 @@
         <!-- PROFILE CONTENT -->
         <div class="my-10 rounded font-monteserat">
             <div class="h-64 w-full relative">
-                <div class="h-56 rounded-t-3xl bg-gray-500 font-monteserat mx-5 sm:mx-20">
+                <div class="h-56 rounded-t-3xl relative bg-gray-500 font-monteserat mx-5 sm:mx-20">
+                    <label for="inputTag" class="image-label absolute bottom-5 right-10">
+                        <span class="material-symbols-outlined p-2 border rounded-full bg-white">
+                            edit
+                        </span>
+                        <input id="inputTag" type="file" class="image-input" />
+                    </label>
+
                 </div>
                 <div class="w-full flex justify-center ">
-                    <img class="h-36 w-36 rounded-full absolute  -bottom-5 sm:left-28"
+                    <img id="image-preview" class="h-36 w-36 rounded-full absolute  -bottom-5 sm:left-28"
                         src="https://cdn.pixabay.com/photo/2017/07/25/10/36/beauty-2537562_1280.jpg" alt="profile" />
                 </div>
 
             </div>
             <div class="ml-0 sm:ml-28 my-10 p-5">
                 <h1 class="text-3xl my-5 font-bold">Chief Onoh Clinton</h1>
-                <span class="text-sm font-thin">Biography</span>
-                <p class="my-3 text-lg w-full sm:w-1/2 text-justify">
+                <span class="text-lg font-bold">Biography</span>
+                <p class="my-3 text-sm w-full font-thin sm:w-1/2 text-justify">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore beatae ipsum nihil aperiam fugiat
                     maxime libero eligendi amet, suscipit deleniti quaerat molestiae iste? Laborum, eum animi corporis
                     enim et officiis!
                 </p>
-
-
             </div>
             <div class="my-5 ml-5  mx-5 sm:mx-20 ">
-                <span class="text-lg">Posts</span>
+                <span class="text-lg font-bold">Posts</span>
             </div>
 
             <!-- POSTS -->
@@ -295,4 +309,21 @@
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="./scripts/index.js"></script>
+
+    <script>
+        $(document).ready(() => {
+            let input = $("#inputTag");
+
+            input.change(() => {
+                let imageFile = document.querySelector("input[type=file]").files[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#image-banner').attr('background-image', e.target.result);
+                    $('#image-preview').attr('src', e.target.result);
+
+                }
+                reader.readAsDataURL(imageFile);
+            })
+        })
+    </script>
 </body>
