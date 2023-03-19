@@ -53,8 +53,8 @@
 </head>
 
 <body>
-    <div class="overflow-hidden">
-        <div class="my-10 flex bg-white ">
+    <div class="">
+        <div class="sticky top-0 z-50 py-5 sm:py-3 mt-0 shadow-md my-10 flex bg-white ">
             <div class="relative w-full flex flex-col">
                 <div class="flex   w-full px-5 sm:px-20">
                     <div class="w-full  flex items-center justify-start">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="hidden sm:flex w-full space-x-5 justify-end items-center">
-                        <a class="font-bold hover:bg-slate-100 px-3 py-2" href="/">Login</a>
+                        <a class="font-bold hover:bg-slate-100 px-3 py-2" href="./login.html">Login</a>
                         <a class="font-bold px-3 py-2 rounded-md text-white bg-black" href="/">Signup</a>
                         <a class="p-3 h-16 w-16 rounded-full flex flex-col justify-center  border  text-center bg-gray-500 text-white"
                             href="/">
@@ -91,12 +91,11 @@
                         </button>
                     </div>
 
-
-                    <!-- <span id="menu">hi</span> -->
                 </div>
                 <div id="sub_menu" class="hidden bg-white top-full absolute z-20 w-full my-5">
                     <div class="flex flex-col space-y-3 sm:hidden shadow-2xl p-5">
-                        <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="./post.html">Create Post</a>
+                        <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="./post.html">Create
+                            Post</a>
                         <a class="w-fit rounded font-bold hover:bg-slate-100 px-3 py-2" href="/">Log In</a>
                         <a class="w-fit font-bold px-3 py-2 rounded-md text-white bg-black" href="/">Signup</a>
                         <a class="border p-1 h-12 w-12 rounded-full flex flex-col justify-center  text-center bg-gray-500 text-white"
@@ -113,24 +112,44 @@
             <h1 class="text-xl my-5 font-bold">Create a Post</h1>
             <p class="text-sm my-5">Want to create a post or a twitch? Create one here</p>
             <div class="w-full flex flex-col sm:flex-row my-5">
-                <!-- Add Image -->
-                <div id="image-banner"
-                    class="h-48 relative sm:h-96 w-full p-5  rounded-md border-dashed border-4 flex flex-col items-center justify-center">
-                    <img id="image-preview" class="h-36 w-36" src="./assets/images/gallery.png">
-                    <label for="inputTag" class="image-label absolute">
+                <div class="w-full">
+                    <!-- Add Image -->
+                    <div id="image-banner"
+                        class="h-48 w-full p-5  relative sm:h-96 rounded-md border-dashed border-4 flex flex-col items-center justify-center">
+                        <img id="image-preview" class="h-36 w-36" src="./assets/images/gallery.png">
+                        <label for="inputTag" class="image-label absolute">
 
-                        <!-- Select Image <br /> -->
-                        <span class="px-3 py-2  w-fit border border-black text-white bg-black">
-                            Select Image
-                        </span>
-                        <input id="inputTag" type="file" class="image-input" />
-                        <br />
-                        <span id="imageName"></span>
-                    </label>
+                            <!-- Select Image <br /> -->
+                            <span class="px-3 py-2  w-fit border border-black text-white bg-black">
+                                Select Image
+                            </span>
+                            <input id="inputTag" type="file" class="image-input" />
+                            <br />
+                            <span id="imageName"></span>
+                        </label>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="my-5">
+                        <div class="">
+                            <span class="my-3 block">Select Categories</span>
+                            <input type="checkbox" id="category1" name="category" value="species">
+                            <label for="category1">species</label>
+                            <input type="checkbox" id="category2" name="category" class="ml-3 mb-3" value="rarity">
+                            <label for="category2">rarity</label>
+                            <input type="checkbox" id="category3" name="category" class="ml-3 mb-3" value="habitat">
+                            <label for="category3">habitat</label>
+                            <input type="checkbox" id="category3" name="category" class="ml-3 mb-3"
+                                value="conservation">
+                            <label for="category3">conservation</label>
+                            <input type="checkbox" id="category3" name="category" class="ml-3 mb-3" value="behaviour">
+                            <label for="category3">behaviour</label>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- other -->
-                <div class="h-full w-full mt-10 sm:mt-0 sm:px-10 relative">
+                <div class="h-full w-full mt-3 sm:mt-0 sm:px-10 relative">
                     <form class="">
                         <div class="flex flex-col">
                             <Label class="mb-3">Title</Label>
@@ -141,19 +160,19 @@
                             <textarea class="bg-inputCol p-3 rounded h-24" placeholder="Post Content"></textarea>
                         </div>
                         <div>
-                            <!-- <div class="flex flex-col">
-                                <label for="address-input" class="mb-3">Address:</label>
-                                <input type="text" class="bg-inputCol p-3 rounded" id="address-input">
-                            </div> -->
-                            <button id="get-location-btn" type="button">Get Current Location</button>
+                            <span type="button" class="my-3">Get Current Location</span> <input
+                                id="get_location_checkbox" type="checkbox" />
+                            <span class="location_error block my-2 text-red-500"></span>
                             <div class="flex space-x-5 my-3">
                                 <div class="w-full">
                                     <label for="latitude-output">Latitude:</label>
-                                    <span id="latitude-output" class="p-2 bg-inputCol border block h-10 w-full"></span>
+                                    <span id="latitude-output"
+                                        class="p-2 my-3 bg-inputCol border block h-10 w-full"></span>
                                 </div>
                                 <div class="w-full">
                                     <label for="longitude-output">Longitude:</label>
-                                    <span id="longitude-output" class="p-2 bg-inputCol border block h-10 w-full"></span>
+                                    <span id="longitude-output"
+                                        class="p-2 my-3 bg-inputCol border block h-10 w-full"></span>
                                 </div>
                             </div>
 
@@ -165,6 +184,21 @@
 
                 </div>
             </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div
+            class="bg-gray-500 text-white px-5 sm:px-20 h-32 items-center w-full flex flex-col sm:flex-row justify-around py-5 sm:justify-between">
+            <div>
+                <a class="flex items-center" href="#">
+                    <img class="w-8 h-8" src="./assets/images/logo.png" alt="Avatar Logo">
+                    <span class="ml-3  body-font font-crisis">Twitcher</span>
+                </a>
+            </div>
+            <div class=" opacity-100">
+                <span>@2023, Twitchers. All rights reserved</span>
+            </div>
+
         </div>
     </div>
 
@@ -188,23 +222,30 @@
                 reader.readAsDataURL(imageFile);
             })
 
-            $('#get-location-btn').on('click', function () {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        const latitude = position.coords.latitude;
-                        const longitude = position.coords.longitude;
-
-                        $('#latitude-output').text(latitude);
-                        $('#longitude-output').text(longitude);
-                    }, function (error) {
-                        console.log(`Error getting location: ${error.message}`);
-                    });
+            $("#get_location_checkbox").change(async () => {
+                const IP_LOCATION_API_KEY = "2a9605c944cc44729d3daf6b0d239aee";
+                if ($("#get_location_checkbox").prop('checked')) {
+                    try {
+                        $('.location_error').text("");
+                        let res = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${IP_LOCATION_API_KEY}`)
+                        res = await res.json()
+                        $('#latitude-output').text(res.latitude);
+                        $('#longitude-output').text(res.longitude);
+                    } catch (error) {
+                        console.log(error)
+                        $('.location_error').text("Error getting latitude and latitude")
+                    }
                 } else {
-                    console.log('Geolocation is not supported by this browser.');
+                    // Checkbox is not checked
+                    $('#latitude-output').text("");
+                    $('#longitude-output').text("");
+                    $('.location_error').text("");
                 }
-            });
+            })
+
         })
     </script>
+
 </body>
 
 </html>
